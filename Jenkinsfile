@@ -1,17 +1,14 @@
 pipeline {
   agent any
   stages {
-    stage('Unit Test') { 
+    stage('maven Test') { 
       steps {
         sh 'mvn clean test'
       }
     }
      stage('Deploy CloudHub') { 
-      environment {
-        ANYPOINT_CREDENTIALS = credentials('anypoint.credentials')
-      }
-      steps {
-        sh 'mvn deploy -P cloudhub -Dmule.version=3.9.0 -Danypoint.username=${ANYPOINT_CREDENTIALS_USR} -Danypoint.password=${ANYPOINT_CREDENTIALS_PSW}' 
+     steps {
+        sh 'mvn deploy -P cloudhub -Dmule.version=3.9.0 -Danypoint.username=anu1234 -Danypoint.password=Harikas@i123
       }
     }
   }
